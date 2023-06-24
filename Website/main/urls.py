@@ -10,5 +10,9 @@ urlpatterns = [
     path("Обед/<int:obed_id>/", views.obed_detail, name="obed_details"),
     path('Ужин', views.uzhin, name="uzhin"),
     path("Ужин/<int:uzhin_id>/", views.uzhin_detail, name="uzhin_details"),
-    path('Логин', views.login, name="login"),
+    path('login', views.login, name="login"),
+    path('login/registration', views.login_reg, name="login_reg"),
+    path('login/sign_in', views.login_login, name="login_login"),
+    path('login/sign_in/complete', views.login_login_, name="login_sign_in"),
+    path("login/registration/complete", views.login_reg_, name="login_check")
 ]

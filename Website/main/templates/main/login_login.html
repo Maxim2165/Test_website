@@ -66,12 +66,20 @@
       </a>
     </div>
     <div class="welcome-block">
-      <a href="{% url 'login_login' %}">
-        <button>Вход</button>
-      </a>
-      <a href="{% url 'login_reg' %}">
-      <button>Регистрация</button>
-      </a>
+        <form method="post" action="{% url 'login_sign_in' %}">
+          {% csrf_token %}
+          <p>
+            <label>Логин</label>
+            <input type='text' name='login' title='Username' />
+          </p>
+          <p>
+            <label>Пароль</label>
+            <input type='password' name='password' title='Password' />
+          </p>
+          <p>
+            <input type='submit' value="Войти"/>
+          </p>
+        </form>
     </div>
   </body>
 </html>

@@ -9,3 +9,8 @@ class recipes(models.Model):
     cooking_process = models.CharField(max_length=3500, blank=True)
     ingredients = models.CharField(max_length=1500, blank=True)
     image = models.BinaryField()
+
+class users(models.Model):
+    user = models.CharField(max_length=30, blank=False)
+    password = models.CharField(max_length=64, blank=False)
+
