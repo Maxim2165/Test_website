@@ -20,14 +20,18 @@ def zavtrak_detail(request, zavtrak_id):
     zavtrak_id = recipes.objects.filter(id=zavtrak_id)
 
     cooking = zavtrak_id[0].cooking_process
-    cooking_re = re.sub(r'(\d+.)', r'\n\1', cooking)
+    cooking_re =re.sub(r'(?<=\S)\s{2}(?=\S)', '\n', cooking)
 
+    ingredients = zavtrak_id[0].ingredients
+    ingredients_re = re.sub(r'(?<=\S)\s{2}(?=\S)', '\n', ingredients)
+    print(ingredients_re)
 
 
     photo = base64.b64encode(zavtrak_id[0].image).decode("utf-8")
     return render(request, "main/zavtrak_detail.html", context={"zavtrak_id": zavtrak_id,
                                                                 "photo": photo,
-                                                                "cooking_re": cooking_re})
+                                                                "cooking_re": cooking_re,
+                                                                "ingredients_re": ingredients_re})
 
 
 def obed(request):
