@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import recipes
 from django.views.generic import View
 import base64
-
+import re
 
 def index(request):
     return render(request, "main/index.html")
@@ -18,9 +18,16 @@ def zavtrak(request):
 
 def zavtrak_detail(request, zavtrak_id):
     zavtrak_id = recipes.objects.filter(id=zavtrak_id)
+
+    cooking = zavtrak_id[0].cooking_process
+    cooking_re = re.sub(r'(\d+.)', r'\n\1', cooking)
+
+
+
     photo = base64.b64encode(zavtrak_id[0].image).decode("utf-8")
     return render(request, "main/zavtrak_detail.html", context={"zavtrak_id": zavtrak_id,
-                                                                "photo": photo})
+                                                                "photo": photo,
+                                                                "cooking_re": cooking_re})
 
 
 def obed(request):
