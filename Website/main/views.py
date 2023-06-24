@@ -31,11 +31,11 @@ def zavtrak_detail(request, zavtrak_id):
 
     cooking = zavtrak_id[0].cooking_process
     cooking_re =re.sub(r'(?<=\S)\s{2}(?=\S)', '\n', cooking)
+    cooking_re = re.sub(r'\s+$', '', cooking_re)
 
     ingredients = zavtrak_id[0].ingredients
     ingredients_re = re.sub(r'(?<=\S)\s{2}(?=\S)', '\n', ingredients)
-    print(ingredients_re)
-
+    ingredients_re = re.sub(r'\s+$', '', ingredients_re)
 
     photo = base64.b64encode(zavtrak_id[0].image).decode("utf-8")
     return render(request, "main/zavtrak_detail.html", context={"zavtrak_id": zavtrak_id,
@@ -49,16 +49,25 @@ def obed(request):
     for i in recipes_obed:
         photo = base64.b64encode(i.image).decode("utf-8")
         i.image = photo
-
     return render(request, "main/obed.html", context={"data": recipes_obed})
 
 
 def obed_detail(request, obed_id):
     obed_id = recipes.objects.filter(id=obed_id)
+
+    cooking = obed_id[0].cooking_process
+    cooking_re =re.sub(r'(?<=\S)\s{2}(?=\S)', '\n', cooking)
+    cooking_re = re.sub(r'\s+$', '', cooking_re)
+
+    ingredients = obed_id[0].ingredients
+    ingredients_re = re.sub(r'(?<=\S)\s{2}(?=\S)', '\n', ingredients)
+    ingredients_re = re.sub(r'\s+$', '', ingredients_re)
+
     photo = base64.b64encode(obed_id[0].image).decode("utf-8")
     return render(request, "main/obed_detail.html", context={"obed_id": obed_id,
-                                                             "photo": photo})
-
+                                                             "photo": photo,
+                                                             "cooking_re": cooking_re,
+                                                             "ingredients_re": ingredients_re})
 
 def uzhin(request):
     recipes_uzhin = recipes.objects.filter(name_category="ужин")
@@ -70,9 +79,20 @@ def uzhin(request):
 
 def uzhin_detail(request, uzhin_id):
     uzhin_id = recipes.objects.filter(id=uzhin_id)
+
+    cooking = uzhin_id[0].cooking_process
+    cooking_re = re.sub(r'(?<=\S)\s{2}(?=\S)', '\n', cooking)
+    cooking_re = re.sub(r'\s+$', '', cooking_re)
+
+    ingredients = uzhin_id[0].ingredients
+    ingredients_re = re.sub(r'(?<=\S)\s{2}(?=\S)', '\n', ingredients)
+    ingredients_re = re.sub(r'\s+$', '', ingredients_re)
+
     photo = base64.b64encode(uzhin_id[0].image).decode("utf-8")
     return render(request, "main/uzhin_detail.html", context={"uzhin_id": uzhin_id,
-                                                              "photo": photo})
+                                                              "photo": photo,
+                                                              "cooking_re": cooking_re,
+                                                              "ingredients_re": ingredients_re})
 
 
 def login(request):
