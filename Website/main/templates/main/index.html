@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    {% load static%}
+    {% block css_additional %}
+    <link rel="stylesheet" type="text/css" href="{% static 'main/css/style.css' %}"/>
+    {% endblock %}
+    <title>Сервис Кулинарных рецептов</title>
+  </head>
+  <body class="body">
+    <div class="futer">
+      <h1 class="">Рецепты на каждый день жизни</h1>
+    </div>
+    <div class="futer">
+      {% load static%}
+      {% block url1_additional %}
+      <a href="{% url 'index' %}">
+        {% endblock %}
+        <button class="custom-btn btn-12">
+          <span>приготовить</span>
+          <span>Главное</span>
+        </button>
+      </a>
+      {% load static%}
+      {% block url2_additional %}
+      <a href="{% url 'zavtrak' %}">
+        {% endblock %}
+        <button class="custom-btn btn-12">
+          <span>устроим</span>
+          <span>Завтрак</span>
+        </button>
+      </a>
+      {% load static%}
+      {% block ur3_additional %}
+      <a href="{% url 'obed' %}">
+        {% endblock %}
+        <button class="custom-btn btn-12">
+          <span>нашинкуем</span>
+          <span>Обед</span>
+        </button>
+      </a>
+      {% load static%}
+      {% block ur4_additional %}
+      <a href="{% url 'uzhin' %}">
+        {% endblock %}
+        <button class="custom-btn btn-12">
+          <span>чисто от души</span>
+          <span>Ужин</span>
+        </button>
+      </a>
+      {% load static%}
+      {% block ur5_additional %}
+      <a href="{% url 'login' %}">
+        {% endblock %}
+        <button class="custom-btn btn-12">
+          <span>в личный кабинет</span>
+          <span>Вход</span>
+        </button>
+      </a>
+    </div>
+    <div class="welcome-block">
+      <p>
+        Рецепты на каждый день - это сайт, который поможет вам легко и быстро
+        приготовить настоящую домашнюю еду. Мы собрали для вас большую коллекцию
+        проверенных рецептов от наших авторов и обычных домохозяек. Каждый день мы
+        добавляем новые популярные и оригинальные блюда, чтобы удовлетворить самые
+        необычные вкусы.
+      </p>
+      <p>
+        На нашем сайте вы найдете рецепты для завтрака, обеда и ужина Мы подбираем
+        ингредиенты таким образом, чтобы они были доступны в любом магазине, и
+        показываем простые способы их приготовления. "Рецепты на каждый день" -
+        это идеальное место для тех, кто хочет готовить дома, экономить время и
+        деньги, и, главное, наслаждаться замечательными блюдами. Приятного
+        аппетита!
+      </p>
+    </div>
+  </body>
+</html>

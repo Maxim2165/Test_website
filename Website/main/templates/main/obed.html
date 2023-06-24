@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    {% load static%}
+    {% block js_additional %}
+    <script src="{% static 'main/js/scrypt.js' %}"></script>
+    {%endblock%}
+    {% load static%}
+    {% block css_additional %}
+    <link rel="stylesheet" type="text/css" href=" {% static 'main/css/style.css' %} " />
+    {%endblock%}
+    <title>Завтрак</title>
+  </head>
+<body>
+    <div class="futer">
+      <h1 class="">Рецепты на каждый день жизни</h1>
+    </div>
+    <div class="futer">
+      {% load static%}
+      {% block url1_additional %}
+      <a href="{% url 'index' %}">
+        {% endblock %}
+        <button class="custom-btn btn-12">
+          <span>приготовить</span>
+          <span>Главное</span>
+        </button>
+      </a>
+      {% load static%}
+      {% block url2_additional %}
+      <a href="{% url 'zavtrak' %}">
+        {% endblock %}
+        <button class="custom-btn btn-12">
+          <span>устроим</span>
+          <span>Завтрак</span>
+        </button>
+      </a>
+      {% load static%}
+      {% block ur3_additional %}
+      <a href="{% url 'obed' %}">
+        {% endblock %}
+        <button class="custom-btn btn-12">
+          <span>нашинкуем</span>
+          <span>Обед</span>
+        </button>
+      </a>
+      {% load static%}
+      {% block ur4_additional %}
+      <a href="{% url 'uzhin' %}">
+        {% endblock %}
+        <button class="custom-btn btn-12">
+          <span>чисто от души</span>
+          <span>Ужин</span>
+        </button>
+      </a>
+        {% load static%}
+        {% block ur5_additional %}
+        <a href="{% url 'login' %}">
+            {% endblock %}
+            <button class="custom-btn btn-12">
+                <span>в личный кабинет</span>
+                <span>Вход</span>
+            </button>
+        </a>
+    </div>
+    <div class="recept-list">
+        {%for i in data%}
+        <div class="recept">
+            <div class="recept-info">
+                <img src="data:image/jpeg;base64,{{ i.image }}" class="photo">
+                <p class="info">Название рецепта: {{i.name_pecipe}}</p>
+                <br>
+                <p class="info">Увлекательное описание:  {{i.description_recept}}</p>
+                <br>
+                <p class="info">Время приготовления: {{i.cooking_time}} минут</p>
+                <br>
+                <a href="{% url 'obed_details' obed_id=i.id%}">
+                    <input type="submit" value="Посмотреть рецепт" class="intro">
+                </a>
+            </div>
+        </div>
+        <hr>
+        {%endfor%}
+    </div>
+</body>
+</html>
