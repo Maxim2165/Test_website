@@ -60,11 +60,12 @@
                 <div>
                     <img src="data:image/jpeg;base64,{{ photo }}" class="photo2">
                 </div>
-                <p>{{i.name_pecipe}}</p>
-                <p>{{i.description_recept}}</p>
-                <p>{{i.cooking_time}} минут</p>
-                <p style="white-space: pre-wrap;">{{cooking_re}}</p>
-                <p>{{i.ingredients}}</p>
+                <h1> </h1>
+                <h3>{{i.name_pecipe}}</h3>
+                <p>Описание рецепта: {{i.description_recept}}</p>
+                <p>Время приготовления рецепта - {{i.cooking_time}} минут</p>
+                <p style="white-space: pre-wrap;"> Инструкция приготовления: <br> {{cooking_re}}</p>
+                <p style="white-space: pre-wrap;">{{ingredients_re}}</p>
                 {%endfor%}
             </div>
     </div>
