@@ -154,4 +154,19 @@ background: linear-gradient(0deg, rgba(0,172,238,1) 0%, rgba(2,126,251,1) 100%);
   transform: rotateX(-90deg);
 }
 
+.btn-styl
+{
+    position: absolute;
+    top: -20%;
+    left: 40%;
+    transform: translate(-0%,0%);
+}
 
+
+.serch-text
+{
+    pading: 0;
+    color: white;
+    font-size: 10px;
+    transition: 0.5s;
+}

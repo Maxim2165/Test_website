@@ -66,20 +66,22 @@
       </a>
     </div>
     <div class="welcome-block">
+      <div class="btn-styl">
         <form method="post" action="{% url 'login_sign_in' %}">
           {% csrf_token %}
           <p>
             <label>Логин</label>
-            <input type='text' name='login' title='Username' />
+            <input class="serch-text" type='text' name='login' title='Username' />
           </p>
           <p>
-            <label>Пароль</label>
-            <input type='password' name='password' title='Password' />
+            <label >Пароль</label>
+            <input class="serch-text" type='password' name='password' title='Password' />
           </p>
           <p>
             <input type='submit' value="Войти"/>
           </p>
         </form>
+    </div>
     </div>
   </body>
 </html>
