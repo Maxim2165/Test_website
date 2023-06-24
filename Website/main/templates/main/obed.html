@@ -53,29 +53,26 @@
           <span>Ужин</span>
         </button>
       </a>
-        {% load static%}
-        {% block ur5_additional %}
-        <a href="{% url 'login' %}">
-            {% endblock %}
-            <button class="custom-btn btn-12">
-                <span>в личный кабинет</span>
-                <span>Вход</span>
-            </button>
-        </a>
+      {% load static%}
+      {% block ur5_additional %}
+      <a href="{% url 'login' %}">
+        {% endblock %}
+        <button class="custom-btn btn-12">
+          <span>в личный кабинет</span>
+          <span>Вход</span>
+        </button>
+      </a>
     </div>
     <div class="recept-list">
         {%for i in data%}
         <div class="recept">
             <div class="recept-info">
                 <img src="data:image/jpeg;base64,{{ i.image }}" class="photo">
-                <p class="info">Название рецепта: {{i.name_pecipe}}</p>
-                <br>
-                <p class="info">Увлекательное описание:  {{i.description_recept}}</p>
-                <br>
-                <p class="info">Время приготовления: {{i.cooking_time}} минут</p>
-                <br>
+                <h2 class="info fw-light" >{{i.name_pecipe}}</h2>
+                <p class="info">{{i.description_recept}}</p>
+                <p class="info">Время приготовления - {{i.cooking_time}} минут</p>
                 <a href="{% url 'obed_details' obed_id=i.id%}">
-                    <input type="submit" value="Посмотреть рецепт" class="intro">
+                    <input type="submit" value="Посмотреть рецепт" class="btn-2">
                 </a>
             </div>
         </div>

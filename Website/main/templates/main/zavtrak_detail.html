@@ -53,22 +53,31 @@
           <span>Ужин</span>
         </button>
       </a>
+      {% load static%}
+      {% block ur5_additional %}
+      <a href="{% url 'login' %}">
+        {% endblock %}
+        <button class="custom-btn btn-12">
+          <span>в личный кабинет</span>
+          <span>Вход</span>
+        </button>
+      </a>
     </div>
     <div class="recept-list">
             <div>
                 {%for i in zavtrak_id %}
                 <div>
-                    <img src="data:image/jpeg;base64,{{ photo }}" class="photo2">
+                    <img src="data:image/jpeg;base64,{{ photo }}" class="photo1">
                 </div>
-                <h1> </h1>
-                <h3>{{i.name_pecipe}}</h3>
+                <h2>{{i.name_pecipe}}</h2>
                 <p>Описание рецепта: {{i.description_recept}}</p>
-                <p>Время приготовления рецепта - {{i.cooking_time}} минут</p>
-                <p style="white-space: pre-wrap;"> Инструкция приготовления: <br> {{cooking_re}}</p>
+                <h3>Ингредиенты:</h3>
                 <p style="white-space: pre-wrap;">{{ingredients_re}}</p>
+                <p>Время приготовления рецепта - {{i.cooking_time}} минут</p>
+                 <h4>Инструкция приготовления:</h4>
+                <p style="white-space: pre-wrap;">{{cooking_re}}</p>
                 {%endfor%}
             </div>
     </div>
-asd
 </body>
 </html>
