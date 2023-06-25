@@ -15,7 +15,7 @@ body {
 }
 
 .recept-list{
-  background-color: #fff;
+  background-color: #cef2f4;
   margin: 20px auto;
   width: 60%;
   height: auto;
@@ -52,13 +52,14 @@ body {
 }
 
 .welcome-block{
+    border-radius: 40%;
     opacity: .9;
     width: 80%;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
+    background-color: #61b175;
     padding: 30px;
     text-align: center;
     bottom: auto;
@@ -155,3 +156,8 @@ background: linear-gradient(0deg, rgba(0,172,238,1) 0%, rgba(2,126,251,1) 100%);
 }
 
 
+.bacgr{
+ background-size: 80%;
+ background-color: #4113d7;
+
+}

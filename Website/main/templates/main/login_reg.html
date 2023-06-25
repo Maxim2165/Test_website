@@ -66,18 +66,20 @@
     <div class="welcome-block">
         <form method="post" action="{% url 'login_check' %}">
           {% csrf_token %}
+          <h2  style="font-family:'Times New Roman'"> Страница регистрации</h2>
           <p>
-            <label>Логин</label>
-            <input type='text' name='login' title='Username' />
+            <label style="font-family:'Times New Roman'">Логин</label>
+            <input style="font-family:'Times New Roman'" type='text' name='login' title='Username' />
           </p>
           <p>
-            <label>Пароль</label>
-            <input type='password' name='password' title='Password' />
+            <label style="font-family:'Times New Roman'">Пароль</label>
+            <input style="font-family:'Times New Roman'" type='password' name='password' title='Password' />
           </p>
           <p>
-            <input type='submit' value="Зарегистрироваться"/>
+            <input  style="font-family:'Times New Roman'" type='submit' value="Зарегистрироваться"/>
           </p>
         </form>
+
     </div>
   </body>
 </html>

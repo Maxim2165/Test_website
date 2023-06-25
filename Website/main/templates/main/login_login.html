@@ -67,16 +67,17 @@
       <div class="btn-styl">
         <form method="post" action="{% url 'login_sign_in' %}">
           {% csrf_token %}
+          <h2  style="font-family:'Times New Roman'"> Страница входа</h2>
           <p>
-            <label>Логин</label>
-            <input class="serch-text" type='text' name='login' title='Username' />
+            <label style="font-family:'Times New Roman'">Логин</label>
+            <input style="font-family:'Times New Roman'" class="serch-text bacgr" type='text' name='login' title='Username' />
           </p>
           <p>
-            <label >Пароль</label>
-            <input class="serch-text" type='password' name='password' title='Password' />
+            <label style="font-family:'Times New Roman'">Пароль</label>
+            <input class="serch-text bacgr" type='password' name='password' title='Password' />
           </p>
           <p>
-            <input type='submit' value="Войти"/>
+            <input  style="font-family:'Times New Roman'" style="font-family:'Times New Roman'" type='submit' value="Войти"/>
           </p>
         </form>
     </div>
