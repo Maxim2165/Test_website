@@ -14,7 +14,13 @@
   </head>
 <body>
     <div class="futer">
-      <h1 class="">Рецепты на каждый день жизни</h1>
+          {% load static%}
+    {% block logo_additional %}
+    <div class = "logo">
+        <a href="{% url 'index' %}" class = "logo1"></a>
+      </div>
+    {% endblock %}
+        <h1 style="font-family: comic sans ms;">Рецепты на каждый день жизни</h1>
     </div>
    <div class="futer">
       {% load static%}

@@ -7,6 +7,20 @@ body {
     background-size: cover;
 }
 
+.logo{
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.logo1{
+    width: 68px;
+    height:68px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-image: url("soorce/logotip_4.png");
+}
+
 .futer {
     display: flex;
     justify-content: center;
