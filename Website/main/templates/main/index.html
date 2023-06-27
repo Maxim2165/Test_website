@@ -58,12 +58,16 @@
           <span>Вход</span>
         </button>
       </a>
-      <div >
-      <form>
-       <p> <input style="d1" type="search" name="q" placeholder="Поиск по сайту">
-       <input type="submit" value="Найти"></p>
-      </form>
     </div>
+    <div class="d1">
+      <form method="post">
+        {% csrf_token %}
+       <p> <input type="search" name="q" placeholder="Поиск по сайту">
+         <a href="{% url 'poisk_str' %}">
+       <input type="submit" value="Найти">
+           </a>
+       </p>
+      </form>
     </div>
     <div class="welcome-block">
       <p style="font-family:'Times New Roman'">

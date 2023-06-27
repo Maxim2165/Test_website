@@ -15,5 +15,6 @@ urlpatterns = [
     path('login/sign_in', views.login_login, name="login_login"),
     path('login/sign_in/complete', views.login_login_, name="login_sign_in"),
     path("login/registration/complete", views.login_reg_, name="login_check"),
+    path("poisk/", views.poisk_str, name="poisk_str"),
 
 ]
