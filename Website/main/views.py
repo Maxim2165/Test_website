@@ -115,13 +115,25 @@ def login_login(request):
     return render(request, "main/login_login.html")
 
 
+def reg_error(request):
+    return render(request, "main/reg_error.html")
+
+def NO_LOG(request):
+    return render(request, "main/NO_LOG.html")
+
+
 def login_reg_(request):
     if request.method == "POST":
         login_user = request.POST.get("login").translate({ord(c): None for c in string.whitespace})
         password_user = request.POST.get("password").translate({ord(c): None for c in string.whitespace})
         password_user = password_hash(password_user)
-        users(user=str(login_user), password=str(password_user)).save()
-        return registration_complete(request)
+        login = users.objects.filter(user=login_user)
+        if len(login) == 0:
+            users(user=str(login_user), password=str(password_user)).save()
+            return registration_complete(request)
+        else:
+            return reg_error(request)
+
 
 
 def login_login_(request):
@@ -129,7 +141,9 @@ def login_login_(request):
         login_user = request.POST.get("login").translate({ord(c): None for c in string.whitespace})
         password_user = request.POST.get("password").translate({ord(c): None for c in string.whitespace})
         sign_in = users.objects.filter(user=login_user)
-        if (sign_in[0].user.translate({ord(c): None for c in string.whitespace})) == login_user and sign_in[0].password == password_hash(password_user):
+        if len(sign_in) == 1 and \
+                (sign_in[0].user.translate({ord(c): None for c in string.whitespace})) == login_user and sign_in[0].password == password_hash(password_user):
             return login_complete(request)
-
+        else:
+            return NO_LOG(request)
 
