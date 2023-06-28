@@ -47,84 +47,161 @@ def poisk_str(request, data):
 
 
 def zavtrak(request):
-    recipes_savtrak = recipes.objects.filter(name_category="завтрак")
-    for i in recipes_savtrak:
-        photo = base64.b64encode(i.image).decode("utf-8")
-        i.image = photo
-    return render(request, "main/zavtrak.html", context={"data": recipes_savtrak})
+    if request.method == "POST":
+        poisk_sit = request.POST.get("q")
+        signal = recipes.objects.values_list("id", "name_pecipe")
+        data = []
+        for i in signal:
+            hr1 = i[1].find(poisk_sit)
+            if hr1 != -1:
+                vre = str(i[0])
+                data.append(vre)
+        return poisk_str(request, data)
+    else:
+        recipes_savtrak = recipes.objects.filter(name_category="завтрак")
+        for i in recipes_savtrak:
+            photo = base64.b64encode(i.image).decode("utf-8")
+            i.image = photo
+        return render(request, "main/zavtrak.html", context={"data": recipes_savtrak})
 
 
 def zavtrak_detail(request, zavtrak_id):
-    zavtrak_id = recipes.objects.filter(id=zavtrak_id)
+    if request.method == "POST":
+        poisk_sit = request.POST.get("q")
+        signal = recipes.objects.values_list("id", "name_pecipe")
+        data = []
+        for i in signal:
+            hr1 = i[1].find(poisk_sit)
+            if hr1 != -1:
+                vre = str(i[0])
+                data.append(vre)
+        return poisk_str(request, data)
+    else:
+        zavtrak_id = recipes.objects.filter(id=zavtrak_id)
 
-    cooking = zavtrak_id[0].cooking_process
-    cooking_re =re.sub(r'(?<=\S)\s{2}(?=\S)', '\n', cooking)
-    cooking_re = re.sub(r'\s+$', '', cooking_re)
+        cooking = zavtrak_id[0].cooking_process
+        cooking_re =re.sub(r'(?<=\S)\s{2}(?=\S)', '\n', cooking)
+        cooking_re = re.sub(r'\s+$', '', cooking_re)
 
-    ingredients = zavtrak_id[0].ingredients
-    ingredients_re = re.sub(r'(?<=\S)\s{2}(?=\S)', '\n', ingredients)
-    ingredients_re = re.sub(r'\s+$', '', ingredients_re)
+        ingredients = zavtrak_id[0].ingredients
+        ingredients_re = re.sub(r'(?<=\S)\s{2}(?=\S)', '\n', ingredients)
+        ingredients_re = re.sub(r'\s+$', '', ingredients_re)
 
-    photo = base64.b64encode(zavtrak_id[0].image).decode("utf-8")
-    return render(request, "main/zavtrak_detail.html", context={"zavtrak_id": zavtrak_id,
-                                                                "photo": photo,
-                                                                "cooking_re": cooking_re,
-                                                                "ingredients_re": ingredients_re})
+        photo = base64.b64encode(zavtrak_id[0].image).decode("utf-8")
+        return render(request, "main/zavtrak_detail.html", context={"zavtrak_id": zavtrak_id,
+                                                                    "photo": photo,
+                                                                    "cooking_re": cooking_re,
+                                                                    "ingredients_re": ingredients_re})
 
 
 def obed(request):
-    recipes_obed = recipes.objects.filter(name_category="обед")
-    for i in recipes_obed:
-        photo = base64.b64encode(i.image).decode("utf-8")
-        i.image = photo
-    return render(request, "main/obed.html", context={"data": recipes_obed})
+    if request.method == "POST":
+        poisk_sit = request.POST.get("q")
+        signal = recipes.objects.values_list("id", "name_pecipe")
+        data = []
+        for i in signal:
+            hr1 = i[1].find(poisk_sit)
+            if hr1 != -1:
+                vre = str(i[0])
+                data.append(vre)
+        return poisk_str(request, data)
+    else:
+        recipes_obed = recipes.objects.filter(name_category="обед")
+        for i in recipes_obed:
+            photo = base64.b64encode(i.image).decode("utf-8")
+            i.image = photo
+        return render(request, "main/obed.html", context={"data": recipes_obed})
 
 
 def obed_detail(request, obed_id):
-    obed_id = recipes.objects.filter(id=obed_id)
+    if request.method == "POST":
+        poisk_sit = request.POST.get("q")
+        signal = recipes.objects.values_list("id", "name_pecipe")
+        data = []
+        for i in signal:
+            hr1 = i[1].find(poisk_sit)
+            if hr1 != -1:
+                vre = str(i[0])
+                data.append(vre)
+        return poisk_str(request, data)
+    else:
+        obed_id = recipes.objects.filter(id=obed_id)
 
-    cooking = obed_id[0].cooking_process
-    cooking_re =re.sub(r'(?<=\S)\s{2}(?=\S)', '\n', cooking)
-    cooking_re = re.sub(r'\s+$', '', cooking_re)
+        cooking = obed_id[0].cooking_process
+        cooking_re =re.sub(r'(?<=\S)\s{2}(?=\S)', '\n', cooking)
+        cooking_re = re.sub(r'\s+$', '', cooking_re)
 
-    ingredients = obed_id[0].ingredients
-    ingredients_re = re.sub(r'(?<=\S)\s{2}(?=\S)', '\n', ingredients)
-    ingredients_re = re.sub(r'\s+$', '', ingredients_re)
+        ingredients = obed_id[0].ingredients
+        ingredients_re = re.sub(r'(?<=\S)\s{2}(?=\S)', '\n', ingredients)
+        ingredients_re = re.sub(r'\s+$', '', ingredients_re)
 
-    photo = base64.b64encode(obed_id[0].image).decode("utf-8")
-    return render(request, "main/obed_detail.html", context={"obed_id": obed_id,
-                                                             "photo": photo,
-                                                             "cooking_re": cooking_re,
-                                                             "ingredients_re": ingredients_re})
+        photo = base64.b64encode(obed_id[0].image).decode("utf-8")
+        return render(request, "main/obed_detail.html", context={"obed_id": obed_id,
+                                                                 "photo": photo,
+                                                                 "cooking_re": cooking_re,
+                                                                 "ingredients_re": ingredients_re})
 
 def uzhin(request):
-    recipes_uzhin = recipes.objects.filter(name_category="ужин")
-    for i in recipes_uzhin:
-        photo = base64.b64encode(i.image).decode("utf-8")
-        i.image = photo
-    return render(request, "main/uzhin.html", context={"data": recipes_uzhin})
+    if request.method == "POST":
+        poisk_sit = request.POST.get("q")
+        signal = recipes.objects.values_list("id", "name_pecipe")
+        data = []
+        for i in signal:
+            hr1 = i[1].find(poisk_sit)
+            if hr1 != -1:
+                vre = str(i[0])
+                data.append(vre)
+        return poisk_str(request, data)
+    else:
+        recipes_uzhin = recipes.objects.filter(name_category="ужин")
+        for i in recipes_uzhin:
+            photo = base64.b64encode(i.image).decode("utf-8")
+            i.image = photo
+        return render(request, "main/uzhin.html", context={"data": recipes_uzhin})
 
 
 def uzhin_detail(request, uzhin_id):
-    uzhin_id = recipes.objects.filter(id=uzhin_id)
+    if request.method == "POST":
+        poisk_sit = request.POST.get("q")
+        signal = recipes.objects.values_list("id", "name_pecipe")
+        data = []
+        for i in signal:
+            hr1 = i[1].find(poisk_sit)
+            if hr1 != -1:
+                vre = str(i[0])
+                data.append(vre)
+        return poisk_str(request, data)
+    else:
+        uzhin_id = recipes.objects.filter(id=uzhin_id)
 
-    cooking = uzhin_id[0].cooking_process
-    cooking_re = re.sub(r'(?<=\S)\s{2}(?=\S)', '\n', cooking)
-    cooking_re = re.sub(r'\s+$', '', cooking_re)
+        cooking = uzhin_id[0].cooking_process
+        cooking_re = re.sub(r'(?<=\S)\s{2}(?=\S)', '\n', cooking)
+        cooking_re = re.sub(r'\s+$', '', cooking_re)
 
-    ingredients = uzhin_id[0].ingredients
-    ingredients_re = re.sub(r'(?<=\S)\s{2}(?=\S)', '\n', ingredients)
-    ingredients_re = re.sub(r'\s+$', '', ingredients_re)
+        ingredients = uzhin_id[0].ingredients
+        ingredients_re = re.sub(r'(?<=\S)\s{2}(?=\S)', '\n', ingredients)
+        ingredients_re = re.sub(r'\s+$', '', ingredients_re)
 
-    photo = base64.b64encode(uzhin_id[0].image).decode("utf-8")
-    return render(request, "main/uzhin_detail.html", context={"uzhin_id": uzhin_id,
-                                                              "photo": photo,
-                                                              "cooking_re": cooking_re,
-                                                              "ingredients_re": ingredients_re})
+        photo = base64.b64encode(uzhin_id[0].image).decode("utf-8")
+        return render(request, "main/uzhin_detail.html", context={"uzhin_id": uzhin_id,
+                                                                  "photo": photo,
+                                                                  "cooking_re": cooking_re,
+                                                                  "ingredients_re": ingredients_re})
 
 
 def login(request):
-    return render(request, "main/login.html")
+    if request.method == "POST":
+        poisk_sit = request.POST.get("q")
+        signal = recipes.objects.values_list("id", "name_pecipe")
+        data = []
+        for i in signal:
+            hr1 = i[1].find(poisk_sit)
+            if hr1 != -1:
+                vre = str(i[0])
+                data.append(vre)
+        return poisk_str(request, data)
+    else:
+        return render(request, "main/login.html")
 
 
 def registration_complete(request):
@@ -132,22 +209,44 @@ def registration_complete(request):
 
 
 def login_complete(request):
-    return render(request, "main/login_complete.html")
+        return render(request, "main/login_complete.html")
 
 
 def login_reg(request):
-    return render(request, "main/login_reg.html")
+    if request.method == "POST":
+        poisk_sit = request.POST.get("q")
+        signal = recipes.objects.values_list("id", "name_pecipe")
+        data = []
+        for i in signal:
+            hr1 = i[1].find(poisk_sit)
+            if hr1 != -1:
+                vre = str(i[0])
+                data.append(vre)
+        return poisk_str(request, data)
+    else:
+        return render(request, "main/login_reg.html")
 
 
 def login_login(request):
-    return render(request, "main/login_login.html")
+    if request.method == "POST":
+        poisk_sit = request.POST.get("q")
+        signal = recipes.objects.values_list("id", "name_pecipe")
+        data = []
+        for i in signal:
+            hr1 = i[1].find(poisk_sit)
+            if hr1 != -1:
+                vre = str(i[0])
+                data.append(vre)
+        return poisk_str(request, data)
+    else:
+        return render(request, "main/login_login.html")
 
 
 def reg_error(request):
     return render(request, "main/reg_error.html")
 
 def NO_LOG(request):
-    return render(request, "main/NO_LOG.html")
+        return render(request, "main/NO_LOG.html")
 
 
 

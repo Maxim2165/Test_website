@@ -15,7 +15,7 @@
   </head>
   <body class="body">
     <div class="futer">
-          {% load static%}
+    {% load static%}
     {% block logo_additional %}
     <div class = "logo">
         <a href="{% url 'index' %}" class = "logo1"></a>
@@ -69,6 +69,16 @@
           <span>Вход</span>
         </button>
       </a>
+    </div>
+    <div>
+      <form method="post" class="search">
+        {% csrf_token %}
+          <input type="search" name="q" placeholder="Поиск по сайту" class="input">
+          <a href="{% url 'poisk_str' %}">
+              <input type="submit" value="" class="submit">
+          </a>
+          </input>
+      </form>
     </div>
     <div class="welcome-block">
       <h1 style="font-family:'Times New Roman'">

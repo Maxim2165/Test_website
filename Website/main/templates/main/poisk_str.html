@@ -14,7 +14,13 @@
 </head>
 <body>
 <div class="futer">
-      <h1 class="">Рецепты на каждый день жизни</h1>
+    {% load static%}
+    {% block logo_additional %}
+    <div class = "logo">
+        <a href="{% url 'index' %}" class = "logo1"></a>
+      </div>
+    {% endblock %}
+      <h1 style="font-family: comic sans ms;">Рецепты на каждый день жизни</h1>
     </div>
     <div class="futer">
       {% load static%}
@@ -62,6 +68,16 @@
           <span>Вход</span>
         </button>
       </a>
+    </div>
+     <div>
+      <form method="post" class="search">
+        {% csrf_token %}
+          <input type="search" name="q" placeholder="Поиск по сайту" class="input">
+          <a href="{% url 'poisk_str' %}">
+              <input type="submit" value="" class="submit">
+          </a>
+          </input>
+      </form>
     </div>
     <div class="recept-list">
         {% if error == True %}

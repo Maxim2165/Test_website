@@ -70,6 +70,16 @@
         </button>
       </a>
     </div>
+    <div>
+      <form method="post" class="search">
+        {% csrf_token %}
+          <input type="search" name="q" placeholder="Поиск по сайту" class="input">
+          <a href="{% url 'poisk_str' %}">
+              <input type="submit" value="" class="submit">
+          </a>
+          </input>
+      </form>
+    </div>
     <div class="welcome-block">
       <a href="{% url 'login_login' %}">
         <button class="custom-btn btn-12">
