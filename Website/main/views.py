@@ -15,7 +15,35 @@ def password_hash(password_sha):
 
 
 def index(request):
-    return render(request, "main/index.html")
+    if request.method == "POST":
+        poisk_sit = request.POST.get("q")
+        signal = recipes.objects.values_list("id", "name_pecipe")
+        data = []
+        for i in signal:
+            hr1 = i[1].find(poisk_sit)
+            if hr1 != -1:
+                vre = str(i[0])
+                data.append(vre)
+        return poisk_str(request, data)
+    else:
+        return render(request, "main/index.html")
+
+#Культ ериси
+
+def poisk_str(request, data):
+    if len(data) >= 1:
+        recip = recipes.objects.none()
+        for j in data:
+            recip = recip.union(recipes.objects.filter(id=j))
+        for i in recip:
+            photo = base64.b64encode(i.image).decode("utf-8")
+            i.image = photo
+        complet = True
+        return render(request, "main/poisk_str.html", context={"data": recip,
+                                                              "complet": complet})
+    else:
+        error = True
+        return render(request, "main/poisk_str.html", context={"error": error})
 
 
 def zavtrak(request):
@@ -122,6 +150,10 @@ def NO_LOG(request):
     return render(request, "main/NO_LOG.html")
 
 
+
+
+
+
 def login_reg_(request):
     if request.method == "POST":
         login_user = request.POST.get("login").translate({ord(c): None for c in string.whitespace})
@@ -146,4 +178,8 @@ def login_login_(request):
             return login_complete(request)
         else:
             return NO_LOG(request)
+
+
+
+
 

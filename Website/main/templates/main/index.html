@@ -65,6 +65,16 @@
         </button>
       </a>
     </div>
+    <div class="d1">
+      <form method="post">
+        {% csrf_token %}
+       <p> <input type="search" name="q" placeholder="Поиск по сайту">
+         <a href="{% url 'poisk_str' %}">
+       <input type="submit" value="Найти">
+           </a>
+       </p>
+      </form>
+    </div>
     <div class="welcome-block">
       <p style="font-family:'Times New Roman'">
         Рецепты на каждый день - это сайт, который поможет вам легко и быстро
