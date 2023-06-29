@@ -20,7 +20,7 @@
         <a href="{% url 'index' %}" class = "logo1"></a>
       </div>
     {% endblock %}
-        <h1 style="font-family: comic sans ms;">Рецепты на каждый день жизни</h1>
+        <h1 style="font-family: comic sans ms; font-size: 2.1rem;">Рецепты на каждый день жизни</h1>
     </div>
     <div class="futer">
       {% load static%}
@@ -80,7 +80,7 @@
       </form>
     </div>
     <div class="recept-list">
-            <div>
+            <div style="font-family:'Times New Roman'; font-size: 1.2rem;">
                 {%for i in obed_id %}
                 <div>
                     <img src="data:image/jpeg;base64,{{ photo }}" class="photo1">

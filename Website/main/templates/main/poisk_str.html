@@ -69,7 +69,7 @@
         </button>
       </a>
     </div>
-     <div>
+     <div >
       <form method="post" class="search">
         {% csrf_token %}
           <input type="search" name="q" placeholder="Поиск по сайту" class="input">
@@ -79,7 +79,7 @@
           </input>
       </form>
     </div>
-    <div class="recept-list">
+    <div class="recept-list" >
         {% if error == True %}
             Рецепт не найден
         {% endif %}

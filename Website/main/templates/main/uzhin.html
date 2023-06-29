@@ -20,7 +20,7 @@
         <a href="{% url 'index' %}" class = "logo1"></a>
       </div>
     {% endblock %}
-        <h1 style="font-family: comic sans ms;">Рецепты на каждый день жизни</h1>
+        <h1 style="font-family: comic sans ms; font-size: 2.1rem;">Рецепты на каждый день жизни</h1>
     </div>
    <div class="futer">
       {% load static%}
@@ -81,14 +81,14 @@
     </div>
     <div class="recept-list">
         {%for i in data%}
-        <div class="recept">
-            <div class="recept-info">
+        <div class="recept" style="font-family:'Times New Roman'; font-size: 1.2rem;">
+            <div class="recept-info" >
                 <img src="data:image/jpeg;base64,{{ i.image }}" class="photo">
                 <h2 class="info fw-light" >{{i.name_pecipe}}</h2>
                 <p class="info">{{i.description_recept}}</p>
                 <p class="info">Время приготовления - {{i.cooking_time}} минут</p>
                 <a href="{% url 'uzhin_details' uzhin_id=i.id%}">
-                    <input type="submit" value="Посмотреть рецепт" class="btn-2">
+                    <input style="font-family:'Times New Roman'; font-size: 1.1rem;" type="submit" value="Посмотреть рецепт" class="btn-2">
                 </a>
             </div>
         </div>
