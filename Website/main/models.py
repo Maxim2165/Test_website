@@ -14,3 +14,4 @@ class users(models.Model):
     user = models.CharField(max_length=30, blank=False)
     password = models.CharField(max_length=64, blank=False)
 
+
